@@ -58,9 +58,6 @@ class Conv2d():
 
     def calcul_matmul(self,inputs):
         im2col_out = np.matmul(inputs, np.expand_dims(self.conv_w.copy(),axis=0)) + self.conv_b
-        # print(f'np.expand_dims(self.conv_w,axis=0) = {self.conv_w.shape}')
-        # np.expand_dims(self.conv_w, axis=0)
-
         im2col_out = np.transpose(im2col_out,(0,2,1))
         im2col_out = im2col_out.reshape(inputs.shape[0],self.out_channels,self.output_height,self.output_width)
         return im2col_out
